@@ -16,11 +16,11 @@ import java.awt.Point;
  *
  * @author kevin.lawrence
  */
-public class Student extends Actor {
+public class PaintPalette extends Actor {
 
-    public Student(Point position, Velocity velocity) {
+    public PaintPalette(Point position, Velocity velocity) {
         super(position, velocity);
-        this.setImage(ResourceTools.loadImageFromResource("resources/student_books.png").getScaledInstance(60, 100, Image.SCALE_SMOOTH));
+        setImage(ResourceTools.loadImageFromResource("resources/paint_palette.png").getScaledInstance(25, 25, Image.SCALE_SMOOTH));
     }
-
+    
 }
