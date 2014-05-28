@@ -14,12 +14,13 @@ import java.awt.Point;
 
 /**
  *
- * @author kevin.lawrence
+ * @author doughill
  */
-public class PaintPalette extends Actor {
+public class ReportCardFail extends Actor {
 
-    public PaintPalette(Point position, Velocity velocity) {
+    public ReportCardFail(Point position, Velocity velocity) {
         super(position, velocity);
-        setImage(ResourceTools.loadImageFromResource("resources/paint_palette.png").getScaledInstance(25, 25, Image.SCALE_SMOOTH));
+        setImage(ResourceTools.loadImageFromResource("resources/report_card_fail.png").getScaledInstance(25, 25, Image.SCALE_SMOOTH));
     }  
 }
+
