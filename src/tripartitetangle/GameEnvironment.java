@@ -45,17 +45,42 @@ class GameEnvironment extends Environment {
             getActors().add(tb);
         }
 
-
+        lastRain = System.currentTimeMillis();
     }
+    private int FLOOR = 402;
 
     @Override
     public void timerTaskHandler() {
+        makeItRain();
+
         checkCollection();
-      //  if (student != null) {
-        //    if (student.getPosition().y == KeyEvent.VK_UP) {
-          //      student.getVelocity().y = 0;
-            //}   
-        //}
+
+
+
+        if (student != null) {
+            if (student.getPosition().y >= FLOOR) {
+                student.getPosition().y = FLOOR - 2;
+                student.getVelocity().y = 0;
+            }
+        }
+    }
+    private long lastRain;
+    private int rainDelayMS = 3000;
+
+    private void makeItRain() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastRain >= rainDelayMS) {
+            lastRain = currentTime;
+            System.out.println("tb");
+            TennisBall tb = new TennisBall(new Point((int) (Math.random() * 600), -20), new Velocity(0, 3));
+            PaintPalette pp = new PaintPalette(new Point((int) (Math.random() * 600), -20), new Velocity(0, 2));
+
+            tennisBalls.add(tb);
+            getActors().add(tb);
+            paintPalettes.add(pp);
+            getActors().add(pp);
+        }
+    
     }
 
     private void checkCollection() {
@@ -63,6 +88,7 @@ class GameEnvironment extends Environment {
             if (pp.intersects(student)) {
                 pp.setPosition(-100, -100);
             }
+
             for (TennisBall tb : tennisBalls) {
                 if (tb.intersects(student)) {
                     tb.setPosition(-100, -100);
@@ -89,9 +115,9 @@ class GameEnvironment extends Environment {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             student.stop();
         }
-         if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+        if (e.getKeyCode() == KeyEvent.VK_LEFT) {
             student.stop();
-         }
+        }
         if (e.getKeyCode() == KeyEvent.VK_UP) {
             student.getVelocity().y = +2;
         }
