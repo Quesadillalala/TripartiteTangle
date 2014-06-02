@@ -27,6 +27,7 @@ class GameEnvironment extends Environment {
     ArrayList<TennisBall> tennisBalls;
     private int sportscore = 0;
     private int artscore = 0;
+    private int academicscore = 0;
 
     @Override
     public void initializeEnvironment() {
@@ -144,6 +145,10 @@ class GameEnvironment extends Environment {
         graphics.setColor(Color.ORANGE);
         graphics.setFont(new Font("Space Age", Font.BOLD, 40));
         graphics.drawString("Sport Score: " + this.getSportscore(), 630, 70);
+        
+        graphics.setColor(Color.ORANGE);
+        graphics.setFont(new Font("Space Age", Font.BOLD, 40));
+        graphics.drawString("Academic Score: " + this.getAcademicscore(), 630, 105);
     }
 
     /**
@@ -172,6 +177,20 @@ class GameEnvironment extends Environment {
      */
     public void setArtscore(int artscore) {
         this.artscore = artscore;
+    }
+
+    /**
+     * @return the academicscore
+     */
+    public int getAcademicscore() {
+        return academicscore;
+    }
+
+    /**
+     * @param academicscore the academicscore to set
+     */
+    public void setAcademicscore(int academicscore) {
+        this.academicscore = academicscore;
     }
 
     /**
