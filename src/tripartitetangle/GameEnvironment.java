@@ -9,6 +9,7 @@ import environment.Environment;
 import environment.Velocity;
 import images.ResourceTools;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -24,6 +25,8 @@ class GameEnvironment extends Environment {
     Student student;
     ArrayList<PaintPalette> paintPalettes;
     ArrayList<TennisBall> tennisBalls;
+    private int sportscore = 0;
+    private int artscore = 0;
 
     @Override
     public void initializeEnvironment() {
@@ -87,12 +90,13 @@ class GameEnvironment extends Environment {
         for (PaintPalette pp : paintPalettes) {
             if (pp.intersects(student)) {
                 pp.setPosition(-100, -100);
+                this.setArtscore(this.getArtscore() + 10);
             }
 
             for (TennisBall tb : tennisBalls) {
                 if (tb.intersects(student)) {
                     tb.setPosition(-100, -100);
-                    //add to the score?  make a sound?
+                    this.setSportscore(this.getSportscore() + 10);
                 }
             }
         }
@@ -132,5 +136,48 @@ class GameEnvironment extends Environment {
     public void paintEnvironment(Graphics graphics) {
         graphics.setColor(Color.BLUE);
         graphics.fillRect(630, 35, 250, 120);
+        
+        graphics.setColor(Color.ORANGE);
+        graphics.setFont(new Font("Space Age", Font.BOLD, 40));
+        graphics.drawString("Art Score: " + this.getArtscore(), 630, 35);
+        
+        graphics.setColor(Color.ORANGE);
+        graphics.setFont(new Font("Space Age", Font.BOLD, 40));
+        graphics.drawString("Sport Score: " + this.getSportscore(), 630, 70);
     }
+
+    /**
+     * @return the sportscore
+     */
+    public int getSportscore() {
+        return sportscore;
+    }
+
+    /**
+     * @param sportscore the sportscore to set
+     */
+    public void setSportscore(int sportscore) {
+        this.sportscore = sportscore;
+    }
+
+    /**
+     * @return the artscore
+     */
+    public int getArtscore() {
+        return artscore;
+    }
+
+    /**
+     * @param artscore the artscore to set
+     */
+    public void setArtscore(int artscore) {
+        this.artscore = artscore;
+    }
+
+    /**
+     * @return the score
+     */
+    
+
+    
 }
