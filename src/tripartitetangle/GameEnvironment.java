@@ -24,6 +24,7 @@ class GameEnvironment extends Environment {
     Student student;
     ArrayList<PaintPalette> paintPalettes;
     ArrayList<TennisBall> tennisBalls;
+    ArrayList<ReportCard> reportCards;
 
     @Override
     public void initializeEnvironment() {
@@ -43,6 +44,12 @@ class GameEnvironment extends Environment {
             TennisBall tb = new TennisBall(new Point(250 + (i * 50), 450 - (i * 10)), new Velocity(0, 0));
             tennisBalls.add(tb);
             getActors().add(tb);
+        }
+         reportCards = new ArrayList<ReportCard>();
+        for (int i = 0; i < 10; i++) {
+            ReportCard rc = new ReportCard(new Point(350 + (i * 50), 450 - (i * 10)), new Velocity(0, 0));
+            reportCards.add(rc);
+            getActors().add(rc);
         }
 
         lastRain = System.currentTimeMillis();
@@ -74,11 +81,14 @@ class GameEnvironment extends Environment {
             System.out.println("tb");
             TennisBall tb = new TennisBall(new Point((int) (Math.random() * 600), -20), new Velocity(0, 3));
             PaintPalette pp = new PaintPalette(new Point((int) (Math.random() * 600), -20), new Velocity(0, 2));
+            ReportCard rc = new ReportCard(new Point((int) (Math.random() * 600), -20), new Velocity(0, 4));
 
             tennisBalls.add(tb);
             getActors().add(tb);
             paintPalettes.add(pp);
             getActors().add(pp);
+            reportCards.add(rc);
+            getActors().add(rc);
         }
     
     }
@@ -94,7 +104,12 @@ class GameEnvironment extends Environment {
                     tb.setPosition(-100, -100);
                     //add to the score?  make a sound?
                 }
+            for (ReportCard rc : reportCards) {
+                if (rc.intersects(student)) {
+                    rc.setPosition(-100, -100);      
+                }
             }
+        }
         }
     }
 
