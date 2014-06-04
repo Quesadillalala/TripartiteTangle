@@ -79,9 +79,9 @@ class GameEnvironment extends Environment {
         if (currentTime - lastRain >= rainDelayMS) {
             lastRain = currentTime;
             System.out.println("tb");
-            TennisBall tb = new TennisBall(new Point((int) (Math.random() * 600), -20), new Velocity(0, 3));
-            PaintPalette pp = new PaintPalette(new Point((int) (Math.random() * 600), -20), new Velocity(0, 2));
-            ReportCard rc = new ReportCard(new Point((int) (Math.random() * 600), -20), new Velocity(0, 4));
+            TennisBall tb = new TennisBall(new Point((int) (Math.random() * 600), -20), new Velocity(0, 1));
+            PaintPalette pp = new PaintPalette(new Point((int) (Math.random() * 600), -20), new Velocity(0, 1));
+            ReportCard rc = new ReportCard(new Point((int) (Math.random() * 600), -20), new Velocity(0, (1)));
 
             tennisBalls.add(tb);
             getActors().add(tb);
