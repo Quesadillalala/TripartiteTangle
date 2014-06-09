@@ -22,5 +22,10 @@ public class PaintPalette extends Actor {
         super(position, velocity);
         setImage(ResourceTools.loadImageFromResource("resources/paint_palette.png").getScaledInstance(25, 25, Image.SCALE_SMOOTH));
     }
+
+    boolean getPosition(int i, int i0) {
+        return false;
+    }
+
     
 }
